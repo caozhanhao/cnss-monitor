@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNSS Rank Monitor Control Panel</title>
+    <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css">
+    <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+    <script src="https://cdn.staticfile.net/jquery/1.10.2/jquery.min.js"></script>
+    <script src="monitor.js"></script>
+    <link rel="icon" href="cnss.svg" type="image/svg+xml">
+</head>
+<body class="mdui-loaded mdui-appbar-with-toolbar">
+<div class="mdui-appbar mdui-appbar-fixed">
+    <div class="mdui-toolbar mdui-color-blue-700">
+        <span class="mdui-typo-title">CNSS Rank Monitor Control Panel</span>
+    </div>
+</div>
+<div id="content">
+    <div class="loading mdui-p-t-3 mdui-p-l-3 mdui-p-r-3" id="loading">
+        <div class="mdui-progress">
+            <div class="mdui-progress-indeterminate"></div>
+        </div>
+    </div>
+    <div class="mdui-container-fluid mdui-hidden" id="serverinfo-data">
+        <ul class="mdui-list mdui-p-t-3">
+            <li class="mdui-subheader">Monitor</li>
+<!--            <li class="mdui-list-item mdui-ripple">-->
+<!--                    <i class="mdui-list-item-icon mdui-icon material-icons">http</i>-->
+<!--                <div class="mdui-list-item-content">-->
+<!--                    <div class="mdui-textfield mdui-textfield-floating-label">-->
+<!--                        <label class="mdui-textfield-label">cnss</label>-->
+<!--                        <input class="mdui-textfield-input" type="text" id="monitor-server"/>-->
+<!--                        <div class="mdui-textfield-helper">CNSS Server</div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">http</i>
+                <div class="mdui-list-item-content">
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">token</label>
+                        <input class="mdui-textfield-input" type="text" id="monitor-token"/>
+                        <div class="mdui-textfield-helper">CNSS Token</div>
+                    </div>
+                </div>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">format_list_bulleted</i>
+                <div class="mdui-list-item-content">
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">types</label>
+                        <input class="mdui-textfield-input" type="text" id="monitor-types"/>
+                        <div class="mdui-textfield-helper">Monitor Types</div>
+                    </div>
+                </div>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">format_list_bulleted</i>
+                <div class="mdui-list-item-content">
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">tasks</label>
+                        <input class="mdui-textfield-input" type="text" id="monitor-tasks"/>
+                        <div class="mdui-textfield-helper">Monitor Tasks</div>
+                    </div>
+                </div>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">timer</i>
+                <div class="mdui-list-item-content">
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">interval in ms</label>
+                        <input class="mdui-textfield-input" type="text" id="monitor-interval-in-ms"/>
+                        <div class="mdui-textfield-helper">Update Interval (ms)</div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="mdui-subheader">Notification</li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">email</i>
+                <div class="mdui-list-item-content">
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">smtp server</label>
+                        <input class="mdui-textfield-input" type="text" id="notification-smtp-server"/>
+                        <div class="mdui-textfield-helper">SMTP Server</div>
+                    </div>
+                </div>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">person</i>
+                <div class="mdui-list-item-content">
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">smtp_username</label>
+                        <input class="mdui-textfield-input" type="text" id="notification-smtp-username"/>
+                        <div class="mdui-textfield-helper">SMTP Username</div>
+                    </div>
+                </div>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">lock</i>
+                <div class="mdui-list-item-content">
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">smtp_password</label>
+                        <input class="mdui-textfield-input" type="text" id="notification-smtp-password"/>
+                        <div class="mdui-textfield-helper">SMTP Password</div>
+                    </div>
+                </div>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">email</i>
+                <div class="mdui-list-item-content">
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">sender_email</label>
+                        <input class="mdui-textfield-input" type="text" id="notification-smtp-sender-email"/>
+                        <div class="mdui-textfield-helper">SMTP Sender Email</div>
+                    </div>
+                </div>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">email</i>
+                <div class="mdui-list-item-content">
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">receiver_emails</label>
+                        <input class="mdui-textfield-input" type="text" id="notification-smtp-receiver-emails"/>
+                        <div class="mdui-textfield-helper">SMTP Receiver Emails</div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">lock</i>
+                <div class="mdui-list-item-content">
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+                        <label class="mdui-textfield-label">admin_password</label>
+                        <input class="mdui-textfield-input" type="text" id="admin-password"/>
+                        <div class="mdui-textfield-helper">Admin Password</div>
+                    </div>
+                </div>
+            </li>
+            <div class="item mdui-text-center mdui-p-t-2 mdui-p-b-2">
+                <button class="mdui-btn mdui-btn-raised mdui-color-blue mdui-text-color-white-text"
+                        onclick="update_config()">
+                    Save Config
+                </button>
+            </div>
+        </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

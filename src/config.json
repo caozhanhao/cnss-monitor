@@ -1,0 +1,36 @@
+{
+  "monitor": {
+    "server": "https://recruit.cnss.io:8443",
+    "token": "",
+    "types": [
+      "total",
+      "notice",
+      "web",
+      "re",
+      "pwn",
+      "crypto",
+      "blockchain",
+      "misc",
+      "dev",
+      "sa",
+      "design"
+    ],
+    "tasks": [],
+    "interval_in_ms": 200
+  },
+  "server": {
+    "addr": "0.0.0.0",
+    "port": 8080,
+    "resource_path": "../res",
+    "admin_password": ""
+  },
+  "notification": {
+    "smtp": {
+      "server": "",
+      "username": "",
+      "password": "",
+      "sender_email": "",
+      "receiver_emails": []
+    }
+  }
+}
