@@ -379,7 +379,7 @@ namespace czh
 
         for (auto& r : all_tasks)
         {
-          //if (auto it = std::find(tasks.cbegin(), tasks.cend(), r.id); it != tasks.cend())
+          if (auto it = std::find(tasks.cbegin(), tasks.cend(), r.id); it != tasks.cend())
             last_tasks.insert(std::make_pair(r.id, r));
         }
 
@@ -414,7 +414,7 @@ namespace czh
           auto all_tasks = this->get_tasks();
           for (auto& r : all_tasks)
           {
-            //if (auto it = std::find(tasks.cbegin(), tasks.cend(), r.id); it != tasks.cend())
+            if (auto it = std::find(tasks.cbegin(), tasks.cend(), r.id); it != tasks.cend())
               curr_tasks.insert(std::make_pair(r.id, r));
           }
 
