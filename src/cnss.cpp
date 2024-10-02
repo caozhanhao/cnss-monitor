@@ -462,7 +462,8 @@ namespace czh
                   const auto* closest = &score_ups[0];
                   for(const auto& r : score_ups)
                   {
-                    if(r.first < closest->first)
+                    if(std::abs(r.first - static_cast<int>(curr.second.score))
+                      < std::abs(closest->first - static_cast<int>(curr.second.score)))
                     {
                       closest = &r;
                     }
